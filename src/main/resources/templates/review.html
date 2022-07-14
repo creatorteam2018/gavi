@@ -1,0 +1,135 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Test</title>
+    <style>
+        body{
+            font-family: 'Raleway', sans-serif;
+            background-color: #F98071;
+            margin: 0px;
+        }
+        body h1.title{
+            text-align: center;
+            color: #fff;
+        }
+        .visible{
+            display: block;
+        }
+        .hidden{
+            display: none;
+        }
+        #product-slider{
+            background-color: #fff;
+        }
+        .product-box{
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+        .product-desc{
+            font-weight: bold;
+            padding: 10px 0px;
+        }
+        .product-desc h4{
+            margin: 0;
+            color: #446AAF;
+            font-size: 16px;
+        }
+        .product-desc p{
+            color: #3C3F39;
+            margin: 10px 0px 8px;
+        }
+        .product-desc button{
+            padding: 9px 15px;
+            border-radius: 3px;
+            border: 1px solid #c1c1c1;
+            font-weight: bold;
+            color: #2868AF;
+            background: linear-gradient(#FAFDFF, #E8E8E8);
+            background: -moz-linear-gradient(#FAFDFF, #E8E8E8);
+            background: -webkit-linear-gradient(#FAFDFF, #E8E8E8);
+            cursor: pointer;
+            font-family: 'Raleway', sans-serif;
+        }
+        .jscarousal-horizontal{
+            width: 70%;
+            overflow: hidden;
+            height: 280px;
+            padding: 30px 15px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .jscarousal-horizontal-back, .jscarousal-horizontal-forward{
+            float: left;
+            width: 23px;
+            position: relative;
+            top: 50px;
+            cursor: pointer;
+            color: #5D5D5D;
+            font-size: 22px;
+        }
+        .jscarousal-horizontal-forward{
+            float: right;
+        }
+        .jscarousal-horizontal-back:before, .jscarousal-horizontal-forward:before{
+            font-family: FontAwesome;
+        }
+        .jscarousal-horizontal-back:before{
+            content: "\f053";
+        }
+        .jscarousal-horizontal-forward:before{
+            content: "\f054";
+        }
+        .jscarousal-contents-horizontal{
+            width: calc(100% - 50px);
+            height: 100%;
+            float: left;
+            position: relative;
+            overflow: hidden;
+        }
+        .jscarousal-contents-horizontal > .visible{
+            position: absolute;
+            width: 100%;
+        }
+        .jscarousal-contents-horizontal > .visible > .product-box{
+            float: left;
+            margin: 0px 1%;
+            width: 18%;
+        }
+        .jscarousal-contents-horizontal img{
+            width: 100%;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="//nicesnippets.com/demo/jsCarousel-2.0.0.js" type="text/javascript"></script>
+    <link href="custom.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+<!--<div id="container">-->
+<!--    <div id="reviewContainer" th:each="review : ${reviewsList}">-->
+<!--        <td th:text="${review.userName}">userName</td>-->
+<!--        <td th:text="${review.reviewMessage}">reviewMessage</td>-->
+<!--        <td th:text="${review.rate}">rate</td>-->
+<!--        <td th:text="${review.creationDate}">creationDate</td>-->
+<!--        <td th:text="${review.imgURL}">imgURL</td>-->
+<!--        <td th:text="${review.itemID}">itemID</td>-->
+<!--    </div>-->
+<!--</div>-->
+<div id="product-slider">
+    <div th:each="review : ${reviewsList}" class="product-box">
+        <img src="//nicesnippets.com/demo/pro1.jpeg"/>
+        <div class="product-desc">
+            <h4 th:text="${review.userName}">user Name</h4>
+            <p th:text="${review.reviewMessage}">review Message</p>
+            <button>ADD TO CART</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
