@@ -1,13 +1,16 @@
+
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     username: qkxqoqjqwskset
     password: e1e5fb8242e5d6449336fd97a7f96a40a5300b24e6b96ed9479e20b230016588
     url: jdbc:postgresql://ec2-54-87-179-4.compute-1.amazonaws.com:5432/d7vuv1c4ki69ol
-
   jpa:
     show-sql: true
     generate-ddl: true
     hibernate:
       ddl-auto: create
     database: postgresql
+server:
+  servlet:
+    context-path: /gavi
