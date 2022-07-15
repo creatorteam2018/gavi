@@ -7,6 +7,3 @@ spring:
   jpa:
     show-sql: true
     database: postgresql
-server:
-  servlet:
-    context-path: /gavi

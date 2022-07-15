@@ -6,6 +6,8 @@ import java.util.Date;
 
 @Data
 public class ReviewDTO {
+    private Integer id;
+
     private Integer rate;
 
     private String userName;
