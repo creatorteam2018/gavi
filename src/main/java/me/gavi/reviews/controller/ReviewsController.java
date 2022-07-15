@@ -17,15 +17,15 @@ public class ReviewsController {
     }
 
     @GetMapping("/review")
-    public ModelAndView getReviews(@RequestParam("itemId") String itemId){
+    public ModelAndView getReviews(@RequestParam("itemId") String itemId) {
         List<ReviewDTO> reviewDTOList = reviewService.getReviewsByItemName(itemId);
         ModelAndView modelAndView = new ModelAndView("review", "reviewsList", reviewDTOList);
-        modelAndView.addObject("reviewDto",new ReviewDTO());
+        modelAndView.addObject("reviewDto", new ReviewDTO());
         return modelAndView;
     }
 
     @PostMapping("/review")
-    public ModelAndView saveReview(@ModelAttribute("reviewDto") ReviewDTO reviewDTO){
+    public ModelAndView saveReview(@ModelAttribute("reviewDto") ReviewDTO reviewDTO) {
         reviewService.saveReview(reviewDTO);
         return getReviews(reviewDTO.getItemID());
     }
