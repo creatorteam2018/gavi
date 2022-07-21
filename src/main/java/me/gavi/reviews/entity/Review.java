@@ -17,6 +17,8 @@ public class Review {
 
     private String userName;
 
+    private String userEmail;
+
     @Column(length = 2000)
     private String imgURL;
 

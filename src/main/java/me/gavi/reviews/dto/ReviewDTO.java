@@ -12,6 +12,8 @@ public class ReviewDTO {
 
     private String userName;
 
+    private String userEmail;
+
     private String imgURL;
 
     private String reviewMessage;
