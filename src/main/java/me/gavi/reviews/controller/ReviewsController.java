@@ -20,7 +20,9 @@ public class ReviewsController {
     public ModelAndView getReviews(@RequestParam("itemId") String itemId) {
         List<ReviewDTO> reviewDTOList = reviewService.getReviewsByItemName(itemId);
         ModelAndView modelAndView = new ModelAndView("review", "reviewsList", reviewDTOList);
-        modelAndView.addObject("reviewDto", new ReviewDTO());
+        ReviewDTO reviewDTO = new ReviewDTO();
+        reviewDTO.setItemID(itemId);
+        modelAndView.addObject("reviewDto", reviewDTO);
         return modelAndView;
     }
 
