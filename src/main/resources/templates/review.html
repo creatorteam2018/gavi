@@ -116,8 +116,9 @@
 
 <div class="card" style="margin: auto;">
     <div class="card-body">
-        <form action="#" th:action="@{/review}" th:object="${reviewDto}" method="post" style="text-align: center">
+        <form id ="" action="#" th:action="@{/review?itemId=}+${reviewDto.itemID}" th:object="${reviewDto}" method="post" style="text-align: center">
             <div class="rating">
+                <input type="hidden" th:field="*{itemID}"  th:value="${reviewDto.itemID}" />
                 <input type="radio" th:field="*{rate}" name="rating" value="5" id="rate_5"/>
                 <label for="rate_5">☆</label>
                 <input type="radio" th:field="*{rate}" name="rating" value="4" id="rate_4"/>

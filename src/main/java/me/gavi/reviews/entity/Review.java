@@ -1,6 +1,7 @@
 package me.gavi.reviews.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -24,6 +25,7 @@ public class Review {
 
     private String itemID;
 
+    @CreationTimestamp
     private Date creationDate;
 
 }
