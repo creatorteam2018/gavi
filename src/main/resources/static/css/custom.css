@@ -106,6 +106,7 @@ h4 {
 }
 .disabled{
     cursor: default !important;
+    font-size: 3vw !important;
 }
 
 .rating > label::before{
