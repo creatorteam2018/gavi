@@ -54,10 +54,6 @@ h4 {
     line-height: .2 !important;
 }
 
-.profile {
-    margin-top: 16px;
-    margin-left: 11px;
-}
 
 .profile-pic {
     width: 58px;
@@ -138,6 +134,7 @@ textarea {
     background-color: #f8f8f8;
     font-size: 16px;
     resize: none;
+    font-family: none;
 }
 
 input[type=submit]{

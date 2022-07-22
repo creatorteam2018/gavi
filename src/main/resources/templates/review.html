@@ -84,21 +84,27 @@
                             class="disabled" for="1" th:for="${review.id}+1">☆</label>
                     </form>
                 </div>
-                <p th:text="${review.reviewMessage}">Online reviews can make or break a customer's decision to make a
-                    purchase. Read about these customer
-                    review sites where your customers'</p>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-sm-2">
-                    <img class="profile-pic" src="https://img.icons8.com/bubbles/100/000000/edit-user.png">
-                </div>
-                <div class="col-sm-10">
-                    <div class="profile">
-                        <h4 class="cust-name" th:text="${review.userName}">Delbert Simonas</h4>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="profile">
+                            <p class="cust-name" style="
+                                text-align: center;
+                                font-family: system-ui;
+                                font-weight: bold;
+                                margin-top: 0px;"
+                               th:text="${review.userName}">Delbert Simonas</p>
+                        </div>
                     </div>
                 </div>
+                <p style="font-family: sans-serif;" th:text="${#dates.format(review.creationDate, 'dd-MMM-yyyy')}">
+                    5/5/2005
+                </p>
             </div>
+            <hr>
+            <p style="font-family: sans-serif;" th:text="${review.reviewMessage}">Online reviews can make or break a customer's decision to make a
+                purchase. Read about these customer
+                review sites where your customers'
+            </p>
         </div>
     </div>
 </div>
@@ -125,13 +131,14 @@
             </div>
             <input class="textInput" placeholder="Your Name" th:field="*{userName}">
             <dev>
-            <textarea class="textInput" placeholder="Your Review" th:field="*{reviewMessage}"/>
+                <textarea class="textInput" placeholder="Your Review" th:field="*{reviewMessage}"/>
 
             </dev>
             <input type="submit">
         </form>
     </div>
 </div>
+
 
 </body>
 </html>
