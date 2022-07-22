@@ -1,5 +1,5 @@
 body {
-    background-color: #4A148C
+    background-color: #98f0e4
 }
 
 
@@ -139,7 +139,7 @@ textarea {
 
 input[type=submit]{
     float: right;
-    background-color: #EA4C89;
+    background-color: #e2979e;
     border-radius: 8px;
     border-style: none;
     box-sizing: border-box;
