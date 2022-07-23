@@ -62,11 +62,8 @@
                 : "message";
             eventer(messageEvent, function (e) {
                 if (typeof e.data == "object" && e.data.email != null) {
-                    if (parent.localStorage.getItem("PSecwid__75841129__emailPSemail") != null) {
-                        $("#userName").val(parent.localStorage.getItem("PSecwid__75841129__emailPSemail"));
+                        $("#userName").val(e.data.email);
                         $("#reviewForm").show();
-                    }else{
-                        $("#reviewForm").hide();
                     }
                 }
                 console.log(e);
