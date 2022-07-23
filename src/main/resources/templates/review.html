@@ -10,6 +10,7 @@
           th:href="@{css/1.8.1_slick_slick.css}"
           type="text/css"/>
     <link rel="stylesheet" th:href="@{css/custom.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{css/stars.css}" type="text/css"/>
     <script th:src="@{js/jquery_3.3.1_jquery.js}" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
             th:src="@{js/1.8.1_slick_slick.js}"
@@ -55,12 +56,98 @@
             parent.postMessage(document.documentElement.scrollHeight, "*");
             if (localStorage.getItem("PSecwid__75841129__emailPSemail") != null) {
                 $("#userName").val(localStorage.getItem("PSecwid__75841129__emailPSemail"));
+                $("#reviewForm").show();
+            }else{
+                $("#reviewForm").hide();
             }
         });
     </script>
 </head>
-<body>
+<body style="
+    height: auto;
+">
 
+<!--review statistics-->
+<div class="productReviews">
+
+    <div class="sectionContent">
+
+        <div class="md-whiteframe-1dp">
+            <div class="gradientBlock layout-column">
+                <h2>Overall Rating</h2>
+                <div class="md-whiteframe-2dp circularWrapper animated">
+                    <div class="overallRating">
+                        <div class="ratingValue" th:text="${#numbers.formatDecimal(totalRate,1,1)}">4.5</div>
+
+                        <span class="icon iconScale-1x nowrap ratingRow"><span class="icon colored"
+                                                                               th:style="'width: '+((${totalRate}/5)*100)+'%;'"></span></span>
+
+                        <div class="reviewCount" th:text="${rateCount} +' reviews'">2,313 reviews</div>
+                    </div>
+                </div>
+            </div>
+            <h4 style="font-family: Source Sans Pro,Helvetica,Arial,tahoma,Microsoft YaHei,Hiragino Sans GB,sans-serif;
+    font-size: 15px;
+    color: #666;
+    padding-top: 7px;
+    margin-bottom: 16px;
+    border: 0;
+    text-align: center;
+"
+                th:text="${#numbers.formatDecimal((totalRate/5)*100,1,1)} + '% customers satisfied'">96.9% customers
+                satisfied</h4>
+
+            <div class="ratingChart colored animatedChart" ng-class="{animatedChart:animatedChart}" style="
+            padding-bottom: 15px;
+            margin-bottom: 5px;">
+                <div class="chartRow layout-row">
+                    <div class="digit flex-none">5</div>
+                    <div class="icon icon-star flex-none"></div>
+                    <div class="chartWrapper flex-auto">
+                        <div th:style="'width: '+ ((${rateMap.containsKey(5)?rateMap.get(5):0}/${rateCount})*100)+'%'"></div>
+                    </div>
+                    <div class="reviewCount flex-none" th:text="${rateMap.containsKey(5)?rateMap.get(5):0}">1,501</div>
+                </div>
+                <div class="chartRow layout-row">
+                    <div class="digit flex-none">4</div>
+                    <div class="icon icon-star flex-none"></div>
+                    <div class="chartWrapper flex-auto">
+                        <div th:style="'width: '+ ((${rateMap.containsKey(4)?rateMap.get(4):0}/${rateCount})*100)+'%'"></div>
+                    </div>
+                    <div class="reviewCount flex-none" th:text="${rateMap.containsKey(4)?rateMap.get(4):0}">585</div>
+                </div>
+                <div class="chartRow layout-row">
+                    <div class="digit flex-none">3</div>
+                    <div class="icon icon-star flex-none"></div>
+                    <div class="chartWrapper flex-auto">
+                        <div th:style="'width: '+ ((${rateMap.containsKey(3)?rateMap.get(3):0}/${rateCount})*100)+'%'"></div>
+                    </div>
+                    <div class="reviewCount flex-none" th:text="${rateMap.containsKey(3)?rateMap.get(3):0}">161</div>
+                </div>
+                <div class="chartRow layout-row">
+                    <div class="digit flex-none">2</div>
+                    <div class="icon icon-star flex-none"></div>
+                    <div class="chartWrapper flex-auto">
+                        <div th:style="'width: '+ ((${rateMap.containsKey(2)?rateMap.get(2):0}/${rateCount})*100)+'%'"></div>
+                    </div>
+                    <div class="reviewCount flex-none" th:text="${rateMap.containsKey(2)?rateMap.get(2):0}">39</div>
+                </div>
+                <div class="chartRow layout-row">
+                    <div class="digit flex-none">1</div>
+                    <div class="icon icon-star flex-none"></div>
+                    <div class="chartWrapper flex-auto">
+                        <div th:style="'width: '+ ((${rateMap.containsKey(1)?rateMap.get(1):0}/${rateCount})*100)+'%'"></div>
+                    </div>
+                    <div class="reviewCount flex-none" th:text="${rateMap.containsKey(1)?rateMap.get(1):0}">27</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--reviews-->
 <div class="items">
     <div class="card" th:each="review : ${reviewsList}">
         <div class="card-body">
@@ -101,7 +188,8 @@
                 </p>
             </div>
             <hr>
-            <p style="font-family: sans-serif;" th:text="${review.reviewMessage}">Online reviews can make or break a customer's decision to make a
+            <p style="font-family: sans-serif;" th:text="${review.reviewMessage}">Online reviews can make or break a
+                customer's decision to make a
                 purchase. Read about these customer
                 review sites where your customers'
             </p>
@@ -109,7 +197,8 @@
     </div>
 </div>
 
-<div class="card" style="margin: auto;">
+<!--post review-->
+<div id="reviewForm" class="card" style="margin: auto;">
     <div class="card-body">
         <form action="#" id="" method="post" style="text-align: center"
               th:action="@{/review?itemId=}+${reviewDto.itemID}"
