@@ -104,7 +104,7 @@
                     <div class="digit flex-none">5</div>
                     <div class="icon icon-star flex-none"></div>
                     <div class="chartWrapper flex-auto">
-                        <div th:style="'width: '+ ((${rateMap.containsKey(5)?rateMap.get(5):0}/${rateCount})*100)+'%'"></div>
+                        <div th:style="'width: '+ ((${rateMap.containsKey(5)?rateMap.get(5):0}/${rateCount!=0 ? rateCount:1})*100)+'%'"></div>
                     </div>
                     <div class="reviewCount flex-none" th:text="${rateMap.containsKey(5)?rateMap.get(5):0}">1,501</div>
                 </div>
@@ -112,7 +112,7 @@
                     <div class="digit flex-none">4</div>
                     <div class="icon icon-star flex-none"></div>
                     <div class="chartWrapper flex-auto">
-                        <div th:style="'width: '+ ((${rateMap.containsKey(4)?rateMap.get(4):0}/${rateCount})*100)+'%'"></div>
+                        <div th:style="'width: '+ ((${rateMap.containsKey(4)?rateMap.get(4):0}/${rateCount!=0 ? rateCount:1})*100)+'%'"></div>
                     </div>
                     <div class="reviewCount flex-none" th:text="${rateMap.containsKey(4)?rateMap.get(4):0}">585</div>
                 </div>
@@ -120,7 +120,7 @@
                     <div class="digit flex-none">3</div>
                     <div class="icon icon-star flex-none"></div>
                     <div class="chartWrapper flex-auto">
-                        <div th:style="'width: '+ ((${rateMap.containsKey(3)?rateMap.get(3):0}/${rateCount})*100)+'%'"></div>
+                        <div th:style="'width: '+ ((${rateMap.containsKey(3)?rateMap.get(3):0}/${rateCount!=0 ? rateCount:1})*100)+'%'"></div>
                     </div>
                     <div class="reviewCount flex-none" th:text="${rateMap.containsKey(3)?rateMap.get(3):0}">161</div>
                 </div>
@@ -128,7 +128,7 @@
                     <div class="digit flex-none">2</div>
                     <div class="icon icon-star flex-none"></div>
                     <div class="chartWrapper flex-auto">
-                        <div th:style="'width: '+ ((${rateMap.containsKey(2)?rateMap.get(2):0}/${rateCount})*100)+'%'"></div>
+                        <div th:style="'width: '+ ((${rateMap.containsKey(2)?rateMap.get(2):0}/${rateCount!=0 ? rateCount:1})*100)+'%'"></div>
                     </div>
                     <div class="reviewCount flex-none" th:text="${rateMap.containsKey(2)?rateMap.get(2):0}">39</div>
                 </div>
@@ -136,7 +136,7 @@
                     <div class="digit flex-none">1</div>
                     <div class="icon icon-star flex-none"></div>
                     <div class="chartWrapper flex-auto">
-                        <div th:style="'width: '+ ((${rateMap.containsKey(1)?rateMap.get(1):0}/${rateCount})*100)+'%'"></div>
+                        <div th:style="'width: '+ ((${rateMap.containsKey(1)?rateMap.get(1):0}/${rateCount!=0 ? rateCount:1})*100)+'%'"></div>
                     </div>
                     <div class="reviewCount flex-none" th:text="${rateMap.containsKey(1)?rateMap.get(1):0}">27</div>
                 </div>

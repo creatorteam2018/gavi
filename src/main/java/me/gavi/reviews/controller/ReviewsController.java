@@ -24,6 +24,9 @@ public class ReviewsController {
         Map<Integer, Long> rateMap = reviewDTOList.stream().collect(Collectors.groupingBy(ReviewDTO::getRate, Collectors.counting()));
         long rateCount = rateMap.values().stream().mapToLong(Long::longValue).sum();
         Double totalRate = rateMap.entrySet().stream().reduce(0l, (counter, map) -> counter += map.getKey() * map.getValue(), Long::sum).doubleValue()/rateCount;
+        if(Double.isNaN(totalRate)){
+            totalRate=0.0;
+        }
         ModelAndView modelAndView = new ModelAndView("review", "reviewsList", reviewDTOList);
         ReviewDTO reviewDTO = new ReviewDTO();
         reviewDTO.setItemID(itemId);
