@@ -53,13 +53,13 @@
 
                 ]
             });
-            parent.postMessage(document.documentElement.scrollHeight, "*");
             if (localStorage.getItem("PSecwid__75841129__emailPSemail") != null) {
                 $("#userName").val(localStorage.getItem("PSecwid__75841129__emailPSemail"));
                 $("#reviewForm").show();
             }else{
                 $("#reviewForm").hide();
             }
+            parent.postMessage(document.documentElement.scrollHeight, "*");
         });
     </script>
 </head>
@@ -198,7 +198,7 @@
 </div>
 
 <!--post review-->
-<div id="reviewForm" class="card" style="margin: auto;">
+<div id="reviewForm" class="card" style="margin: auto; display: none;">
     <div class="card-body">
         <form action="#" id="" method="post" style="text-align: center"
               th:action="@{/review?itemId=}+${reviewDto.itemID}"
