@@ -62,7 +62,7 @@
                 : "message";
             eventer(messageEvent, function (e) {
                 if (typeof e.data == "object" && e.data.email != null) {
-                    $("#userName").val(e.data.email);
+                    // $("#userName").val(e.data.email);
                     $("#reviewForm").show();
                     parent.postMessage(document.documentElement.scrollHeight, "*");
                 }
