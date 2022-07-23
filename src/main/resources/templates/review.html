@@ -53,12 +53,25 @@
 
                 ]
             });
-            if (parent.localStorage.getItem("PSecwid__75841129__emailPSemail") != null) {
-                $("#userName").val(parent.localStorage.getItem("PSecwid__75841129__emailPSemail"));
-                $("#reviewForm").show();
-            }else{
-                $("#reviewForm").hide();
-            }
+            var eventMethod = window.addEventListener
+                ? "addEventListener"
+                : "attachEvent";
+            var eventer = window[eventMethod];
+            var messageEvent = eventMethod === "attachEvent"
+                ? "onmessage"
+                : "message";
+            eventer(messageEvent, function (e) {
+                if (typeof e.data == "object" && e.data.email != null) {
+                    if (parent.localStorage.getItem("PSecwid__75841129__emailPSemail") != null) {
+                        $("#userName").val(parent.localStorage.getItem("PSecwid__75841129__emailPSemail"));
+                        $("#reviewForm").show();
+                    }else{
+                        $("#reviewForm").hide();
+                    }
+                }
+                console.log(e);
+            });
+
             parent.postMessage(document.documentElement.scrollHeight, "*");
         });
     </script>
