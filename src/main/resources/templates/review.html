@@ -62,8 +62,9 @@
                 : "message";
             eventer(messageEvent, function (e) {
                 if (typeof e.data == "object" && e.data.email != null) {
-                        $("#userName").val(e.data.email);
-                        $("#reviewForm").show();
+                    $("#userName").val(e.data.email);
+                    $("#reviewForm").show();
+                    parent.postMessage(document.documentElement.scrollHeight, "*");
                 }
                 console.log(e);
             });
@@ -207,7 +208,7 @@
 </div>
 
 <!--post review-->
-<div id="reviewForm" class="card" style="margin: auto; display: none;">
+<div class="card" id="reviewForm" style="margin: auto; display: none;">
     <div class="card-body">
         <form action="#" id="" method="post" style="text-align: center"
               th:action="@{/review?itemId=}+${reviewDto.itemID}"
